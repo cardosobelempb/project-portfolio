@@ -1,99 +1,139 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+## start
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Recuperação de senha
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+**Requesitos funcionais**
 
-## Description
+- o usuário deve poder recuper sua senha informando o seu email;
+- o usuário deve receber um email com istruções de recuperação de senha;
+- o usuário deve poder resetar sua senha;
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+**Requesitos não funcionais**
 
-## Project setup
+- utilizar mailtrap para testar envios em ambientes de dev;
+- utizar amazon ses para envio em produção;
+- o envio de emill deve acontecer em segundo plano (bacground job);
 
-```bash
-$ npm install
-```
+**Regras de negocios**
 
-## Compile and run the project
+- o link enviado por email para resetar a senha, deve expirar em 2h;
+- o usuário precisa confirmar a nova senha ao resetar sua senha;
 
-```bash
-# development
-$ npm run start
+# atualização do perfil
 
-# watch mode
-$ npm run start:dev
+**RF**
 
-# production mode
-$ npm run start:prod
-```
+- o usuário deve poder atualizar seu nome, emial e senha;
 
-## Run tests
+**RNF**
 
-```bash
-# unit tests
-$ npm run test
+**RN**
 
-# e2e tests
-$ npm run test:e2e
+- o usuário não pode altear seu emil para já utilizado;
+- o usuário para atualiar sua senha, deve informar sua senha antiga;
+- o usuário para atualizar sua senha, precisa infirmar a nova senha;
 
-# test coverage
-$ npm run test:cov
-```
+# painel do prestador
 
-## Deployment
+**RF**
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- o usuário deve poder listar seus agendamentos de um dia específico;
+- o prestador deve receber uma notificação sempre que houve um novo agendamento;
+- o prestador deve poder visializar as noificações não lidas;
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+**RNF**
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+- os agendamentos do prestador no dia devem ser armazenado em cache;
+- as notificações do prestador devem ser armazenadas no mongoDB;
+- as notificações do prestador devem ser envidas em tempo-real utilizando socket.io;
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+**RN**
 
-## Resources
+- a notificação deve ter um status de lida ou não-lida para o prestador possa controllar;
 
-Check out a few resources that may come in handy when working with NestJS:
+# Agendamentos de serviços
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+**RF**
 
-## Support
+- o usuário deve poder listar todos prestadores de serviços cadastrados;
+- o usuário deve poder listar os dias de um mês com pelo menos um horário disponível de um prestador;
+- o usuário deve poder listar horário disponível em um dia específico de um prestador;
+- o usuário deve poder realizar um novo agendamento com um prestador;
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+**RFN**
 
-## Stay in touch
+- a listagem de prestadores deve ser armazenado em cache;
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**RN**
 
-## License
+- cada agendamento deve durar 1h exatamente;
+- os agendamentos devem estar disponível entre 8h ás 18h (Primeiro ás 8h, úlimo ás 17h);
+- o usuário não pode agendar um horário já ocupado;
+- o usuário não pode agendar em um horário que já passou;
+- o usuário não pode agendar serviços consigo mesmo
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## initial
+
+- nest new 05-nest-clear
+
+## Eslint
+
+- npm i eslint @rocketseat/eslint-config -D
+  .eslintrc.json
+  {
+  "extends": "@rocketseat/eslint-config/node",
+  "no-useless-controller": "off"
+  }
+
+## Dep
+
+- npm i @nestjs/config
+- npm i bcryptjs
+- npm i @types/bcryptjs -D
+- npm i dotenv -D
+
+## JWT
+
+- npm i @nestjs/jwt
+- npm i @nestjs/passport
+- npm i passport-jwt
+- npm i @types/passport-jwt -D
+
+## Validation
+
+- npm i zod
+- npm i zod-validation-error
+
+## Docker
+
+- docker-compose up -d
+
+## Prisma
+
+- npm i prisma -D
+- npm i @prisma/client
+- npx prisma init
+- npx prisma migrate dev
+
+## KEY
+
+### private
+
+- openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+- certutil -encode private_key.pem private_key.txt
+
+### public
+
+- openssl rsa -pubout -in private_key.pem -out public_key.pub
+- certutil -encode public_key.pub public_key.txt
+
+## Vitest test
+
+- npm i vitest -D
+- npm i unplugin-swc -D
+- npm i @swc/core -D
+- npm i @vitest/coverage-v8 -D
+- npm i vite-tsconfig-paths -D
+- npm i supertest -D
+- npm i @types/supertest -D
+- npm i @faker-js/faker -D
