@@ -104,7 +104,7 @@
 - npm i zod
 - npm i zod-validation-error
 
-## Docker
+## Docker 83996324183
 
 - docker-compose up -d
 

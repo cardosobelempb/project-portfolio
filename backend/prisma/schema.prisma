@@ -8,32 +8,44 @@ datasource db {
 }
 
 model Technology {
-  id          String    @id @default(uuid())
+  id          String                   @id @default(uuid())
   name        String
   description String
-  imgUri      String    @map("img_uri")
-  isActive    Boolean   @default(true) @map("is_active")
-  isDetached  Boolean   @default(false) @map("is_detached")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime? @updatedAt @map("updated_at")
-  deletedAt   DateTime? @map("deleted_at")
+  imgUri      String                   @map("img_uri")
+  isActive    Boolean                  @default(true) @map("is_active")
+  isDetached  Boolean                  @default(false) @map("is_detached")
+  createdAt   DateTime                 @default(now()) @map("created_at")
+  updatedAt   DateTime?                @updatedAt @map("updated_at")
+  deletedAt   DateTime?                @map("deleted_at")
+  projects    TechnologiesOnProjects[]
 
   @@map("technologies")
 }
 
 model Project {
-  id          String    @id @default(uuid())
-  name        String
-  description String
-  imgUri      String[]  @map("img_uri")
-  level       Int
-  type        String
-  repository  String
-  isActive    Boolean   @default(true) @map("is_active")
-  isDetached  Boolean   @default(false) @map("is_detached")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime? @updatedAt @map("updated_at")
-  deletedAt   DateTime? @map("deleted_at")
+  id           String                   @id @default(uuid())
+  name         String
+  description  String
+  imgUri       String[]                 @map("img_uri")
+  level        Int
+  type         String
+  repository   String
+  isActive     Boolean                  @default(true) @map("is_active")
+  isDetached   Boolean                  @default(false) @map("is_detached")
+  createdAt    DateTime                 @default(now()) @map("created_at")
+  updatedAt    DateTime?                @updatedAt @map("updated_at")
+  deletedAt    DateTime?                @map("deleted_at")
+  technologies TechnologiesOnProjects[]
 
   @@map("projects")
+}
+
+model TechnologiesOnProjects {
+  technology   Technology @relation(fields: [technologyId], references: [id])
+  technologyId String     @map("technology_id")
+  project      Project    @relation(fields: [projectId], references: [id])
+  projectId    String     @map("project_id")
+
+  @@id([technologyId, projectId])
+  @@map("technologies_on_projects")
 }

@@ -445,3 +445,19 @@ VALUES (
         'Linguagem de estilos para definição do design e layout das páginas web.',
         'https://github.com/portfolio-projetos-dev/assets/raw/main/images/css.svg'
     );
+
+INSERT INTO
+    technologies (
+        id,
+        name,
+        is_detached,
+        description,
+        img_uri
+    )
+VALUES (
+        '86be7c9c-b705-400c-befd-213575c5bd90',
+        'HTML',
+        false,
+        'Linguagem de marcação para estruturação de páginas web.',
+        'https://github.com/portfolio-projetos-dev/assets/raw/main/images/html.svg'
+    );
