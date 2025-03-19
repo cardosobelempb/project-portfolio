@@ -11,5 +11,6 @@ export namespace TechnologyProps {
 		createdAt: Date
 		updatedAt?: Date | null
 		deletedAt?: Date | null
+		projects?: ProjectProps.Props[]
 	}
 }
