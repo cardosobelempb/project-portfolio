@@ -21,12 +21,13 @@ model Technology {
   @@map("technologies")
 }
 
-model Projects {
+model Project {
   id          String    @id @default(uuid())
   name        String
   description String
-  imgUri      String    @map("img_uri")
-  level       Decimal
+  imgUri      String[]  @map("img_uri")
+  level       Int
+  type        String
   repository  String
   isActive    Boolean   @default(true) @map("is_active")
   isDetached  Boolean   @default(false) @map("is_detached")
