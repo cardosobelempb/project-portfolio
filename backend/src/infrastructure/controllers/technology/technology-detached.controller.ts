@@ -2,7 +2,7 @@ import { ProjectProps } from "@core"
 import { Controller, Get, HttpCode, HttpStatus } from "@nestjs/common"
 import { TechnologyDetachedService } from "src/application/services/technology/technology-detached.service"
 
-@Controller("detached")
+@Controller("detached/technologies")
 export class TechnologyDetachedController {
 	constructor(private readonly technologyDetachedService: TechnologyDetachedService) {}
 

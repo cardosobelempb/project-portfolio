@@ -9,6 +9,7 @@ export class ProjectRepository {
 			where: {
 				id,
 			},
+			include: {technologies: {select: {technology: true}}},
 		})
 
 		if (!project) {
