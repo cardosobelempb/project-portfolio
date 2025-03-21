@@ -1,7 +1,8 @@
-POST https://n8npanel.surb.com.br/webhook-test/personal-assistant
+# POST https://n8npanel.surb.com.br/webhook-test/personal-assistant
+POST https://n8nwebhook.surb.com.br/webhook/personal-assistant
 Content-Type: application/json
 
 {
-  "chatId": "123456",
-  "messgem": "Bom dia"
+  "chatId": "12345689",
+  "messgem": "Você trabalha com desenvolvimento de software para mobile?"
 } 
