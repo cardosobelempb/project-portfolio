@@ -38,6 +38,10 @@ RUN npm ci \
 # COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules/
 # COPY --from=builder --chown=node:node /home/node/dist/ ./dist/
 # COPY --from=builder --chown=node:node /home/node/prisma/ ./prisma/
+
 # docker container run --name portfolio -p 3000:3000 project-portfolio
+# docker image tag project-portfolio surb/project-portfolio:1.0
+# docker image push surb/project-portfolio:1.0
+# docker login --username=surb
 
 CMD ["node", "dist/backend/src/main.js"]
