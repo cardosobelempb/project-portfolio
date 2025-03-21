@@ -15,28 +15,29 @@ USER node
 WORKDIR /home/node/backend
 
 COPY package*.json ./
-RUN npm install
 
 WORKDIR /home/node
 COPY --chown=node:node . .
 
 WORKDIR /home/node/backend
-RUN npx prisma generate \
+RUN npm ci \
+    && npx prisma generate \
     && npm run build \
     && npm prune --omit=dev
 
 # ---
 
-FROM node:20-alpine
+# FROM node:20-alpine
 
-ENV NODE_ENV production
+# ENV NODE_ENV production
 
-USER node
-WORKDIR /home/node
+# USER node
+# WORKDIR /home/node
 
-COPY --from=builder --chown=node:node /home/node/package*.json ./
-COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules/
-COPY --from=builder --chown=node:node /home/node/dist/ ./dist/
+# COPY --from=builder --chown=node:node /home/node/package*.json ./
+# COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules/
+# COPY --from=builder --chown=node:node /home/node/dist/ ./dist/
 # COPY --from=builder --chown=node:node /home/node/prisma/ ./prisma/
+# docker container run --name portfolio -p 3000:3000 project-portfolio
 
 CMD ["node", "dist/backend/src/main.js"]
