@@ -1,0 +1,7 @@
+POST https://n8npanel.surb.com.br/webhook-test/personal-assistant
+Content-Type: application/json
+
+{
+  "chatId": "123456",
+  "messgem": "Bom dia"
+} 
