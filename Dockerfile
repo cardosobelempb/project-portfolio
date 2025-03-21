@@ -43,5 +43,9 @@ RUN npm ci \
 # docker image tag project-portfolio surb/project-portfolio:1.0
 # docker image push surb/project-portfolio:1.0
 # docker login --username=surb
+# docker container run --rm alpine ash -c "ifconfig"
+# docker container run --rm --net none alpine ash -c "ifconfig"
+# docker network ls
+# docker network inspect bridge
 
 CMD ["node", "dist/backend/src/main.js"]
