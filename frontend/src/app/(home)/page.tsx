@@ -1,10 +1,9 @@
-import Header from "@/components/shared/header"
+import LandingContent from "@/components/landing/landing-content"
 
 export default function Home() {
 	return (
 		<>
-			<Header />
-			<h1>Inicio</h1>
+			<LandingContent />
 		</>
 	)
 }

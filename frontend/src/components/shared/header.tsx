@@ -6,7 +6,7 @@ import Navigation from "./navgation"
 
 export default function Header() {
 	return (
-		<header className="flex items-center h-16">
+		<header className="flex items-center h-16 bg-black/50 w-full">
 			<Container className="flex flex-1 justify-between items-center">
 				<div className="flex items-center justify-between gap-10">
 					<Link href="/" className="hidden sm:block">
