@@ -12,7 +12,7 @@ export default function ProjectItem({ project }: Props) {
 	return (
 		<Link href={`/project/${project.id}`}>
 			<div className="min-w-64 min-h-64 relative rounded-xs overflow-hidden border border-zinc-800">
-				<Image src={project.imgUri[0]} alt={project.name} fill objectFit="object-cover" />
+				<Image src={project.imgUri[0]} alt={project.name} fill objectFit="cover" />
 			</div>
 		</Link>
 	)
