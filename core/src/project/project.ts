@@ -7,7 +7,7 @@ export namespace ProjectProps {
 		id: string
 		name: string
 		description: string
-		images: string[]
+		imgUri: string[]
 		level: LevelProps.Props
 		type: TypeProps.Props
 		repository: string
