@@ -13,7 +13,7 @@ type NavigationItemProps = {
 export default function Navigation() {
 	const path = usePathname()
 	return (
-		<nav className="flex gap-6">
+		<nav className="flex gap-3 sm:gap-5">
 			<NavigationItem href={"/"} selected={path === "/"}>
 				Início
 			</NavigationItem>
