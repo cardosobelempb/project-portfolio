@@ -1,5 +1,6 @@
 import { technologyFindDetachedService } from "@/services/technology/technology-find-detached.service"
 import { TechnologyProps } from "@core"
+
 import Header from "../shared/header"
 import { Technologies } from "../technologies/technologies"
 
@@ -18,7 +19,7 @@ export default async function LandingContent({ technologies }: LandingContentPro
 					<h1 className="flex gap-3 items-center">
 						<span className="w-2 h-2 bg-red-500 rounded-full"></span>
 						<span className="text-2xl md:text-5xl sm:text-5xl  font-bold text-center">
-							Cláudio Cadoso
+							Cláudio Cardoso
 						</span>
 						<span className="w-2 h-2 bg-red-500 rounded-full"></span>
 					</h1>

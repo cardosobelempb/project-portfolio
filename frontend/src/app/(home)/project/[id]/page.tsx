@@ -1,3 +1,4 @@
+import Container from "@/components/shared/container"
 import Header from "@/components/shared/header"
 
 type ProjectProps = {
@@ -8,9 +9,9 @@ export default async function Project({ params }: ProjectProps) {
 	const { id } = await params
 
 	return (
-		<div>
+		<Container>
 			<Header />
 			<h1>Projeto {id}</h1>
-		</div>
+		</Container>
 	)
 }
